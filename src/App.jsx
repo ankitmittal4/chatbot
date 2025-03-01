@@ -21,7 +21,10 @@ export default function App() {
             setMessages([...messages, { text: input, sender: 'user' }]);
             setInput('');
             setIsBotTyping(true); // Show typing indicator
-            const url = '';
+            const apiKey = import.meta.env.VITE_API_KEY;
+            const apiUrl = import.meta.env.VITE_API_URL;
+
+            const url = `${apiUrl}?key=${apiKey}`;
             const data = {
                 contents: [
                     {
