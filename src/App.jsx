@@ -20,15 +20,15 @@ export default function App() {
             setMessages([...messages, { text: input, sender: 'user' }]);
             setInput('');
             setIsBotTyping(true); // Show typing indicator
-            // const url =
-            //     'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCJbY9OGqsPPTwZbPbFkNOdoa2TZwNHXO0';
-            // const data = {
-            //     contents: [
-            //         {
-            //             parts: [{ text: 'Explain how AI works' }],
-            //         },
-            //     ],
-            // };
+            const url =
+                'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCJbY9OGqsPPTwZbPbFkNOdoa2TZwNHXO0';
+            const data = {
+                contents: [
+                    {
+                        parts: [{ text: input }],
+                    },
+                ],
+            };
             try {
                 const res = await axios.post(url, data);
                 console.log(
