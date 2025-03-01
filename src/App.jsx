@@ -59,7 +59,7 @@ export default function App() {
                     My ChatBot
                 </div>
             </div>
-            <div className="flex flex-col h-screen  w-8/12 mx-auto pt-16 pb-4">
+            <div className="flex flex-col h-screen  md:w-8/12 mx-auto pt-16 pb-4">
                 <div className="flex-1 p-4 overflow-y-auto">
                     {messages.map((msg, index) => (
                         <div
@@ -68,7 +68,7 @@ export default function App() {
                                 msg.sender === 'user'
                                     ? 'justify-end'
                                     : 'justify-start'
-                            } mb-2`}
+                            } mb-3`}
                         >
                             {msg.sender === 'bot' && (
                                 <img
@@ -107,7 +107,7 @@ export default function App() {
                     )}
                     <div ref={messagesEndRef} />
                 </div>
-                <div className="p-4 rounded-md bg-slate-700">
+                <div className="sm:p-4 p-3 rounded-md bg-slate-700 sm:mx-0 mx-3">
                     <div className="flex gap-2">
                         <input
                             type="text"
