@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 
 export default function App() {
     const [messages, setMessages] = useState([]);
@@ -20,8 +21,7 @@ export default function App() {
             setMessages([...messages, { text: input, sender: 'user' }]);
             setInput('');
             setIsBotTyping(true); // Show typing indicator
-            const url =
-                'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCJbY9OGqsPPTwZbPbFkNOdoa2TZwNHXO0';
+            const url = '';
             const data = {
                 contents: [
                     {
@@ -35,17 +35,21 @@ export default function App() {
                     'AI resposne: ',
                     res.data.candidates[0].content.parts[0].text,
                 );
+                setMessages((prev) => [
+                    ...prev,
+                    {
+                        text: res.data.candidates[0].content.parts[0].text,
+                        sender: 'bot',
+                    },
+                ]);
+                setIsBotTyping(false);
             } catch {
                 console.log('Error while getting response from api');
             }
             // Simulate bot response
-            setTimeout(() => {
-                setMessages((prev) => [
-                    ...prev,
-                    { text: 'This is a bot response.', sender: 'bot' },
-                ]);
-                setIsBotTyping(false); // Hide typing indicator
-            }, 500);
+            // setTimeout(() => {
+
+            // }, 500);
         }
     };
 
@@ -74,7 +78,8 @@ export default function App() {
                                         : 'bg-gray-200 text-gray-800'
                                 }`}
                             >
-                                {msg.text}
+                                {/* <pre>{msg.text}</pre> */}
+                                <ReactMarkdown>{msg.text}</ReactMarkdown>
                             </div>
                         </div>
                     ))}
