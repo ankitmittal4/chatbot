@@ -49,10 +49,6 @@ export default function App() {
             } catch {
                 console.log('Error while getting response from api');
             }
-            // Simulate bot response
-            // setTimeout(() => {
-
-            // }, 500);
         }
     };
 
@@ -74,6 +70,13 @@ export default function App() {
                                     : 'justify-start'
                             } mb-2`}
                         >
+                            {msg.sender === 'bot' && (
+                                <img
+                                    src="https://www.shutterstock.com/image-vector/chat-bot-icon-virtual-smart-600nw-2478937553.jpg"
+                                    alt="Bot"
+                                    className="w-8 h-8 rounded-full mr-2"
+                                />
+                            )}
                             <div
                                 className={`rounded-lg p-3 max-w-[70%] ${
                                     msg.sender === 'user'
@@ -81,20 +84,27 @@ export default function App() {
                                         : 'bg-gray-200 text-gray-800'
                                 }`}
                             >
-                                {/* <pre>{msg.text}</pre> */}
-                                <ReactMarkdown>{msg.text}</ReactMarkdown>
+                                {msg.sender === 'bot' ? (
+                                    <ReactMarkdown>{msg.text}</ReactMarkdown>
+                                ) : (
+                                    msg.text
+                                )}
                             </div>
                         </div>
                     ))}
                     {/* Typing indicator */}
                     {isBotTyping && (
                         <div className="flex justify-start mb-2">
-                            <div className="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[70%]">
+                            <img
+                                src="https://www.shutterstock.com/image-vector/chat-bot-icon-virtual-smart-600nw-2478937553.jpg"
+                                alt="Bot"
+                                className="w-8 h-8 rounded-full mr-2"
+                            />
+                            <div className="bg-gray-200 text-gray-500 rounded-lg p-3 max-w-[70%]">
                                 Typing...
                             </div>
                         </div>
                     )}
-                    {/* Empty div to track the end of messages */}
                     <div ref={messagesEndRef} />
                 </div>
                 <div className="p-4 rounded-md bg-slate-700">
