@@ -20,28 +20,30 @@ export default function App() {
         if (input.trim()) {
             setMessages([...messages, { text: input, sender: 'user' }]);
             setInput('');
-            setIsBotTyping(true); // Show typing indicator
-            const apiKey = import.meta.env.VITE_API_KEY;
-            const apiUrl = import.meta.env.VITE_API_URL;
+            setIsBotTyping(true);
+            // const apiKey = import.meta.env.VITE_API_KEY;
+            const apiUrl = import.meta.env.VITE_API_URL1;
 
-            const url = `${apiUrl}?key=${apiKey}`;
-            const data = {
-                contents: [
-                    {
-                        parts: [{ text: input }],
-                    },
-                ],
-            };
+            // const url = `${apiUrl}?key=${apiKey}`;
+            const url = `${apiUrl}/api/query`;
+            // const data = {
+            //     contents: [
+            //         {
+            //             parts: [{ text: input }],
+            //         },
+            //     ],
+            // };
+            // console.log('Data: ', data.contents[0].parts[0].text);
             try {
-                const res = await axios.post(url, data);
-                console.log(
-                    'AI resposne: ',
-                    res.data.candidates[0].content.parts[0].text,
-                );
+                const res = await axios.post(url, {
+                    question: input,
+                });
+
                 setMessages((prev) => [
                     ...prev,
                     {
-                        text: res.data.candidates[0].content.parts[0].text,
+                        // text: res.data.candidates[0].content.parts[0].text,
+                        text: res.data.data,
                         sender: 'bot',
                     },
                 ]);
