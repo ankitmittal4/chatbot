@@ -58,7 +58,7 @@ export default function App() {
         <div className="bg-slate-900 min-h-screen">
             <div className="fixed top-0 left-0 right-0 bg-slate-600 shadow-md z-10">
                 <div className="text-center py-3 text-xl font-semibold text-white">
-                    My ChatBot
+                    JSW Bawal Maintenance Solutions Chatbot
                 </div>
             </div>
             <div className="flex flex-col h-screen  md:w-8/12 mx-auto pt-16 pb-4">
