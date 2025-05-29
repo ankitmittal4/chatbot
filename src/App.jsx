@@ -66,11 +66,10 @@ export default function App() {
                     {messages.map((msg, index) => (
                         <div
                             key={index}
-                            className={`flex ${
-                                msg.sender === 'user'
-                                    ? 'justify-end'
-                                    : 'justify-start'
-                            } mb-3`}
+                            className={`flex ${msg.sender === 'user'
+                                ? 'justify-end'
+                                : 'justify-start'
+                                } mb-3`}
                         >
                             {msg.sender === 'bot' && (
                                 <img
@@ -80,11 +79,10 @@ export default function App() {
                                 />
                             )}
                             <div
-                                className={`rounded-lg p-3 max-w-[70%] ${
-                                    msg.sender === 'user'
-                                        ? 'bg-gray-600 text-white'
-                                        : 'bg-gray-200 text-gray-800'
-                                }`}
+                                className={`rounded-lg p-3 max-w-[70%] ${msg.sender === 'user'
+                                    ? 'bg-gray-600 text-white'
+                                    : 'bg-gray-200 text-gray-800'
+                                    }`}
                             >
                                 {msg.sender === 'bot' ? (
                                     <ReactMarkdown>{msg.text}</ReactMarkdown>
