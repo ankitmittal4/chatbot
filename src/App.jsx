@@ -25,6 +25,7 @@ export default function App() {
             const apiUrl = import.meta.env.VITE_API_URL1;
 
             // const url = `${apiUrl}?key=${apiKey}`;
+            // const url = `${apiUrl}?key=${apiKey}`;
             const url = `${apiUrl}/api/query`;
             // const data = {
             //     contents: [
